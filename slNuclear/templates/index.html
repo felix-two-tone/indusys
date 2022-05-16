@@ -1,0 +1,80 @@
+<!doctype html>
+
+
+<head>
+<style>
+#demotext {
+color: transparent;
+background: #666666;
+-webkit-background-clip: text;
+-moz-background-clip: text;
+background-clip: text;
+text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
+font-size: 40px;
+}
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+   appearance: none;
+
+  width: 250px;
+  height: 20px;
+}
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+body{
+background: #e7e5e4;}
+#borderDemo2 {
+border: 17px groove #1900FF;
+border-radius: 20px;
+}
+
+
+</style>
+<title>DasRex PCS 3.3</title> 
+    <meta charset=utf-8> </head>
+    <body>
+<div class="center" id="borderDemo">
+<div id="demotext">DasRex Nuclear</div>
+<p>   
+     <form class = "grid" action = "/info/" method ="POST">
+
+     <form class = "grid" action = "/cam/" method ="POST">
+        <button> <a href="/poweron/">*Power On</a></button>
+        <button> <a href="/poweroff/">*Power Off</a></button>
+        <button> <a href="/rodsup/">*Raise Rods</a></button>
+        <button> <a href="/rodsdown/">*Lower Rods</a></button>
+</div>
+<div class="center" id="borderDemo">
+	<button> <a href="/fusionmode/">Fusion Mode</a></button>
+        <button> <a href="/disconnect/">Disconnect System</a></button>
+        <button> <a href="/cam/">Site Camera</a></button>
+  <!--Button not used        <button> <a href="/main/">*DATA</a></button>  -->
+</div>
+<p>
+<div class="center" id="borderDemo">
+<img src="{{url_for('static', filename='nuclear.gif')}}" align="middle" />
+</div>
+<div class="center" id="borderDemo">
+
+<input type="Submit" class = "file_submit" value="Get Fusion Level"></input></P>
+{% if cam %}
+<p>
+<div class="center" id="borderDemo2">
+<img src="{{url_for('static', filename='industrial.gif')}}"  style="width: 60%;  height: 60%;" />
+</div>
+{% endif %}
+{% if info %}
+<p>
+<label for="file">Current Fusion: {{info}}</label>
+<progress id="file" value="{{info}}" max="250"> </progress>
+{% endif %}
+</div>
+</div>
+
+    </body>
+
